@@ -1,0 +1,41 @@
+body{
+	/*background-image: url("../img/fondo.jpg");*/
+	background-color: azure;
+    /*margin-top: 0px;
+    height: 350px;
+    background-size: cover;*/  
+}
+
+/*.container{
+	box-sizing: content-box;
+	width: 90%;	
+	margin: 0px;
+	padding: 0px;
+	overflow: auto;
+}*/
+
+
+.bloque-en-linea-40{
+	box-sizing: content-box;
+	margin: 5px;
+	padding: 0px;
+	width: 35%;
+	display:inline-block;	
+	overflow: auto;
+}
+
+.bloque-en-linea-20{
+	box-sizing: content-box;
+	margin: 5px;
+	padding: 0px;
+	width: 20%;
+	display:inline-block;
+	overflow: auto;	
+}
+	.trans{
+  width: 100%;
+  /*background-color: red;*/
+  display: flex;
+  justify-content: center;
+}
+}
