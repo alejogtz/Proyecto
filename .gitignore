@@ -1,3 +1,7 @@
+# Maven Wrapper
+.m2/
+
+
 *.class
 
 # Mobile Tools for Java (J2ME)
