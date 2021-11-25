@@ -1,0 +1,18 @@
+# Unused files
+Dockerfile-webapp.txt
+Dockerfile-war.war
+
+# Configuration files
+.project
+.gitignore
+.dockerignore
+.classpath
+.settings
+
+# Build files
+WebContent/
+target/
+build/
+
+# User files
+README.md
