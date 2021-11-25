@@ -27,6 +27,6 @@ FROM tomcat:9.0.1-jre8-alpine
 RUN adduser -D tomcat; chown -R tomcat:tomcat /usr/local/tomcat
 USER tomcat
 
-COPY --from=build "${HOME}/.m2/repository/Cifrado/Cifrado/0.0.1-SNAPSHOT/*.war" /usr/local/tomcat/webapps/cifrado.war
+COPY --from=build "/root/.m2/repository/Cifrado/Cifrado/0.0.1-SNAPSHOT/*.war" /usr/local/tomcat/webapps/cifrado.war
 
 CMD ["catalina.sh", "run"]
