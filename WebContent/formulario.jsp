@@ -1,3 +1,4 @@
+
 <%@page import="com.heroku.GutierrezReyesAlejo.Util.UrlPara"%>
 <%@page import="com.heroku.GutierrezReyesAlejo.Cifrados.Cifrado"%>
 <%@page import="com.heroku.GutierrezReyesAlejo.Util.Parser.DeString"%>
@@ -21,7 +22,14 @@
 </head>
 <body>
 	<!-- ---------------------------------------------------------------------------------------------- -->
-
+	<div class="container my-4">
+		<!-- Just an image -->
+		<nav class="navbar navbar-dark primary-color"> <a
+			class="navbar-brand" href="#"> <img
+			src="https://imgur.com/Qq2qL8i.jpg"
+			height="30" alt="mdb logo">
+		</a> </nav>
+	</div>
 	<div class="jumbotron text-center">
 		<h1>Algoritmos de Cifrado</h1>
 	</div>
@@ -34,16 +42,16 @@
 				<div class="row">
 					<div class="col-sm-5">
 						<div>
-							<label for="tipo-cifrado">Cifrado por: </label> 
-							<select name="tipo-cifrado" id="tipo-cifrado" onchange="mostrarInput()">
+							<label for="tipo-cifrado">Cifrado por: </label> <select
+								name="tipo-cifrado" id="tipo-cifrado" onchange="mostrarInput()">
 								<option value="polybios" selected>Polybios</option>
 								<option value="desplazamiento">Desplazamiento</option>
 								<option value="playfair">Playfair</option>
 								<option value="hill">Hill</option>
 								<option value="vernarm">vernarm</option>
-							</select>
-							<input type="text" class="form-control" name = "input-key-para-cifrado" 
-							id="input-key-para-cifrado" placeholder="Llave de cifrado">
+							</select> <input type="text" class="form-control"
+								name="input-key-para-cifrado" id="input-key-para-cifrado"
+								placeholder="Llave de cifrado">
 						</div>
 
 						<!-- --------------------------------- -->
@@ -70,15 +78,15 @@
 					<div class="col-sm-5">
 						<h3>Resultado:</h3>
 						<%
-							String textoPlano = "";
-							String textoCifrado = "";
-							Cifrado data = DeObject.aCifrado(request.getSession().getAttribute("objeto-cifrado"));
+						String textoPlano = "";
+						String textoCifrado = "";
+						Cifrado data = DeObject.aCifrado(request.getSession().getAttribute("objeto-cifrado"));
 
-							if (data != null) {
-								textoPlano = data.getTextoPlano();
-								textoCifrado = data.getTextoCifrado();
-								System.out.println(textoCifrado);
-							}
+						if (data != null) {
+							textoPlano = data.getTextoPlano();
+							textoCifrado = data.getTextoCifrado();
+							System.out.println(textoCifrado);
+						}
 						%>
 						<div class="row">
 							<!-- --------------------------------- -->
@@ -100,11 +108,11 @@
 	<!-- ********************************************************************************** -->
 	<div class="container">
 		<%
-			String aviso = (String) request.getAttribute("aviso");
-			if (aviso != null) {
-				out.println(aviso);
-				request.setAttribute("aviso", null);
-			}
+		String aviso = (String) request.getAttribute("aviso");
+		if (aviso != null) {
+			out.println(aviso);
+			request.setAttribute("aviso", null);
+		}
 		%>
 	</div>
 	<!-- ********************************************************************************** -->
