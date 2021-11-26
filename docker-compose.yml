@@ -1,8 +1,10 @@
 version: "3"
 services:
   web:
-    build: ./Dockerfile-webapp
+    build:
+      dockerfile: Dockerfile
+      context: ./
+    container_name: cifrados
     ports:
       - 80:8080
-
       
