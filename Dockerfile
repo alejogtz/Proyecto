@@ -28,6 +28,9 @@ RUN ./mvnw clean install -DskipTests
 FROM tomcat:9.0.1-jre8-alpine
 
 
-COPY --from=build "$/home/tomcat/.m2/repository/Cifrado/Cifrado/0.0.1-SNAPSHOT/*.war" /usr/local/tomcat/webapps/cifrado.war
+COPY --from=build "/home/tomcat/.m2/repository/Cifrado/Cifrado/0.0.1-SNAPSHOT/*.war" /usr/local/tomcat/webapps/cifrado.war
+
+RUN ls -la /usr/local/tomcat/webapps
+
 
 CMD ["catalina.sh", "run"]
