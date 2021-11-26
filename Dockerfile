@@ -2,11 +2,10 @@
 #            BUILD PROCESS              #
 #########################################
 FROM openjdk:8-jdk-alpine as build
-
-RUN adduser -D tomcat; chown -R tomcat:tomcat /usr/local/tomcat
+WORKDIR /workspace/app
+RUN adduser -D tomcat; chown -R tomcat:tomcat /workspace/app
 USER tomcat
 
-WORKDIR /workspace/app
 
 
 # /workspace/app
