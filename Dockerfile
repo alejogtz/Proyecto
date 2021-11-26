@@ -16,4 +16,4 @@ RUN mvn -f /usr/src/myapp/pom.xml package
 
 FROM tomcat:9.0
 
-COPY --from=BUILD /usr/src/myapp/target/projeto-0.0.1-SNAPSHOT.war /usr/local/tomcat/webapps/projeto.war
+COPY --from=BUILD /usr/src/myapp/target/Cifrado-0.0.1-SNAPSHOT.war /usr/local/tomcat/webapps/projeto.war
