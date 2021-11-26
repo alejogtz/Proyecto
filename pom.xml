@@ -1,6 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>Cifrado</groupId>
 	<artifactId>Cifrado</artifactId>
@@ -8,7 +7,16 @@
 	<packaging>war</packaging>
 	<name>Cifrados</name>
 	<description>Cifra por medio de varios algoritmos</description>
+
+	<!-- https://stackoverflow.com/a/14490656 -->
+	<!-- 
+		<packaging>jar</packaging>
+		<build>
+		<finalName>WhatEverYouLikey</finalName>
+		</build> 
+	-->
 	<build>
+		<finalName>cifrados</finalName>
 		<sourceDirectory>src</sourceDirectory>
 		<plugins>
 			<plugin>
@@ -30,18 +38,18 @@
 	</build>
 
 	<properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-</properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
 
 
 	<dependencies>
-	<dependency>
-    <groupId>javax.servlet</groupId>
-    <artifactId>javax.servlet-api</artifactId>
-    <version>3.0.1</version>
-    <scope>provided</scope>
-</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
 
 
 		<!-- https://mvnrepository.com/artifact/com.github.spullara.mustache.java/compiler -->

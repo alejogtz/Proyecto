@@ -1,6 +1,7 @@
 version: "3"
 services:
   web:
+#   image: alekhius/app:1.0
     build:
       dockerfile: Dockerfile
       context: ./

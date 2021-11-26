@@ -1,6 +1,6 @@
 # Unused files
-Dockerfile-webapp.txt
-Dockerfile-war.war
+Dockerfile-webapp
+Dockerfile-war
 
 # Configuration files
 .project

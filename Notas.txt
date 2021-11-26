@@ -1,0 +1,80 @@
+#########################################
+#        DOCKER RUN TEMPLATE            #
+#########################################
+# docker run template
+docker run \
+-e POSTGRES_PASSWORD=12345 \
+-it \
+--rm \
+-p 80:8080 \
+--name cifrados \
+-v /workspace/Proyecto:/app \
+adoptopenjdk/maven-openjdk11:latest \
+bash 
+
+git clone https://github.com/alejogtz/Proyecto /workspace/Cifrados
+cd /workspace/Cifrados
+
+##############################################
+# Use a maven image to install maven wrapper #
+##############################################
+docker run -it --rm --name Cifrados -v "$(pwd)":/root -w /root adoptopenjdk/maven-openjdk11:latest \
+mvn clean install -DskipTests
+# mvn -N io.takari:maven:0.7.7:wrapper # to install maven wrapper
+
+#########################################
+#            git config                 #
+#########################################
+
+git config --global user.email "alejox.gutierrez@gmail.com"
+git config --global user.name "Alejo Gutierrez"
+git remote set-url origin https://alejogtz:<token>@github.com/alejogtz/Proyecto.git
+git commit -m "mvn wrapper added"
+git push origin master
+
+#########################################
+#            docker compose             #
+#########################################
+
+```bash
+$ docker-compose up --build -d
+```
+
+#########################################
+#            Manual steps              #
+#########################################
+
+docker run \
+    -it \
+    --rm \
+    --name Cifrados \
+    -v "$(pwd)":/root \
+    -w /root \
+    adoptopenjdk/maven-openjdk11:latest mvn clean package -DskipTests
+
+
+docker run \
+--rm \
+-p 80:8080 \
+--name cifrados-local \
+-v "$(pwd)/target/Cifrado-0.0.1-SNAPSHOT.war":/usr/local/tomcat/webapps/cifrado.war \
+tomcat:8.5-jre8-alpine catalina.sh run
+
+
+
+#########################################
+#   docker image without docker-compose #
+#########################################
+
+# --build-arg PORT=5432
+# use: RUN mysql ${PORT} 
+# contexto: .
+docker build \
+    --no-cache \
+    --tag alekhius/cifrados:1.0 --file Dockerfile .
+
+docker run --rm --name web -p 80:8080 -t -d alekhius/cifrados:1.0
+
+
+
+
