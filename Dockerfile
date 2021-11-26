@@ -1,23 +1,11 @@
 #########################################
 #            BUILD PROCESS              #
 #########################################
-FROM adoptopenjdk/maven-openjdk11:latest as build
-WORKDIR /workspace/app
+FROM maven:3.5-jdk-8 as build
 
-# RUN adduser -D tomcat; chown -R tomcat:tomcat /workspace/app
-# USER tomcat
-
-
-
-# /workspace/app
-COPY ./mvnw.cmd   .
-COPY ./mvnw       .
-COPY ./.mvn       .mvn/
-
-COPY ./pom.xml    .
-COPY ./src        src
-
-RUN ./mvnw install -DskipTests
+COPY src /usr/src/myapp/src
+COPY pom.xml /usr/src/myapp
+RUN mvn -f /usr/src/myapp/pom.xml install
 
 #######################################
 #            RUN PROCESS              #
