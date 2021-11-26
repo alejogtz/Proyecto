@@ -3,7 +3,11 @@
 #########################################
 FROM openjdk:8-jdk-alpine as build
 
+RUN adduser -D tomcat; chown -R tomcat:tomcat /usr/local/tomcat
+USER tomcat
+
 WORKDIR /workspace/app
+
 
 # /workspace/app
 COPY ./mvnw.cmd   .
@@ -24,8 +28,6 @@ RUN ./mvnw clean install -DskipTests
 
 FROM tomcat:9.0.1-jre8-alpine
 
-RUN adduser -D tomcat; chown -R tomcat:tomcat /usr/local/tomcat
-USER tomcat
 
 COPY --from=build "/root/.m2/repository/Cifrado/Cifrado/0.0.1-SNAPSHOT/*.war" /usr/local/tomcat/webapps/cifrado.war
 
