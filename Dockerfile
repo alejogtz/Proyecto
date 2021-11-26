@@ -3,8 +3,9 @@
 #########################################
 FROM openjdk:8-jdk-alpine as build
 WORKDIR /workspace/app
-RUN adduser -D tomcat; chown -R tomcat:tomcat /workspace/app
-USER tomcat
+
+# RUN adduser -D tomcat; chown -R tomcat:tomcat /workspace/app
+# USER tomcat
 
 
 
@@ -25,7 +26,7 @@ RUN ./mvnw clean install -DskipTests
 # Obtuve la respuesta al problema de no poder visualizar la aplicacion de un usuario de internet
 # Aqui: https://forums.docker.com/t/unable-to-access-the-war-on-tomcat-container-404-not-found/83231/3
 
-FROM tomcat:9.0.1-jre8-alpine
+FROM tomcat:8.5-jre8-alpine
 
 
 COPY --from=build "/home/tomcat/.m2/repository/Cifrado/Cifrado/0.0.1-SNAPSHOT/*.war" /usr/local/tomcat/webapps/cifrado.war
