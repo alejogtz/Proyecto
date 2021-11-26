@@ -1,7 +1,7 @@
 #########################################
 #            BUILD PROCESS              #
 #########################################
-FROM openjdk:11-jdk-oracle as build
+FROM adoptopenjdk/maven-openjdk11:latest as build
 WORKDIR /workspace/app
 
 # RUN adduser -D tomcat; chown -R tomcat:tomcat /workspace/app
@@ -17,7 +17,7 @@ COPY ./.mvn       .mvn/
 COPY ./pom.xml    .
 COPY ./src        src
 
-RUN ./mvnw clean install -DskipTests
+RUN ./mvnw install -DskipTests
 
 #######################################
 #            RUN PROCESS              #
@@ -29,7 +29,7 @@ RUN ./mvnw clean install -DskipTests
 FROM tomcat:8.5-jre8-alpine
 
 
-COPY --from=build "/root/.m2/repository/Cifrado/Cifrado/0.0.1-SNAPSHOT/*.war" /usr/local/tomcat/webapps/cifrado.war
+COPY --from=build /root/.m2/repository/Cifrado/Cifrado/0.0.1-SNAPSHOT/*.war /usr/local/tomcat/webapps/cifrado.war
 
 RUN ls -la /usr/local/tomcat/webapps
 
